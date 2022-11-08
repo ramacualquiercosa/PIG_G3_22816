@@ -1,0 +1,42 @@
+{% extends 'core/main.html' %}
+{% load static %}
+{% block title %}Página{% endblock %}
+{% block content %}
+<br>
+<form class="d-flex" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<br>
+<div class="table-responsive">
+<table class="table table-bordered table-dark ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nro. de habitación</th>
+      <th scope="col">Nombre y apellido</th>
+      <th scope="col">DNI</th>
+      <th scope="col">Ingreso</th>
+      <th scope="col">Egreso</th>
+      <th scope="col">Nro. de personas por habitación</th>
+      <th scope="col">Precio por habitación</th>
+      <th scope="col">Monto de reserva</th>
+      <th scope="col">Monto restante</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>25</td>
+      <td>Ramiro Acosta</td>
+      <td>33854764</td>
+      <td>06/11/2022</td>
+      <td>08/11/2022</td>
+      <td>2</td>
+      <td>$1000</td>
+      <td>$500</td>
+      <td>$500</td>
+  </tbody>
+</table>
+</div>
+{% endblock %}

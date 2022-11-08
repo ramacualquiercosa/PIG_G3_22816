@@ -1,0 +1,28 @@
+{% extends 'core/main.html' %}
+{% load static %}
+{% block title %}Páginas{% endblock %}
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Habitación</th>
+        <th scope="col">Nombre y Apellido</th>
+        <th scope="col">DNI</th>
+        <th scope="col">Fecha de Egreso:</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for page in page_list %}
+      <tr>
+        <th scope="row">{{page.room}}</th>
+        <td>{{page.name}}</td>
+        <td>{{page.dni}}</td>
+        <td>{{page.leave}}</td>
+        <td><a href="{% url 'page' page.id page.name|slugify %}">Ver reserva</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+{% endblock %}

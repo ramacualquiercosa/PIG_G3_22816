@@ -1,0 +1,27 @@
+{% extends 'core/main.html' %}
+{% load static %}
+{% block title %}{{page.name}}{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto">
+        <h2 class="section-heading mb-4">{{object.name}}</h2>
+        <div>
+          <p>Habitación: {{page.room}}</p>
+          <p>DNI: {{page.dni}}</p>
+          <p>Fecha de ingreso: {{page.entry}}</p>
+          <p>Fecha de egreso: {{page.leave}}</p>
+          <p>Precio por habitación: ${{page.price}}</p>
+          <p>Monto abonado: ${{page.reserve}}</p>
+          <p>Monto por abonar: ${{page.resto}}</p>
+          {% if request.user.is_staff %}
+            <p><a href="#">Editar</a></p>
+            <p><a href="#">Eliminar</a></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
