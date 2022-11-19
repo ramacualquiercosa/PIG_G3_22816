@@ -16,8 +16,8 @@
           <p>Monto abonado: ${{page.reserve}}</p>
           <p>Monto por abonar: ${{page.resto}}</p>
           {% if request.user.is_staff %}
-            <p><a href="#">Editar</a></p>
-            <p><a href="#">Eliminar</a></p>
+            <p><a href="{% url 'pages:update' page.id %}">Editar</a></p>
+            <p><a href="{% url 'pages:delete' page.id %}">Eliminar</a></p>
           {% endif %}
         </div>
       </div>
