@@ -15,11 +15,19 @@
     <tbody>
       {% for page in page_list %}
       <tr>
-        <th scope="row">{{page.room}}</th>
+        <th scope="row">{{page.id}}</th>
         <td>{{page.name}}</td>
         <td>{{page.dni}}</td>
         <td>{{page.leave}}</td>
-        <td><a href="{% url 'pages:page' page.id page.name|slugify %}">Ver reserva</a></td>
+        <td><a class="btn btn-dark btn-sm" href="{% url 'pages:page' page.id page.name|slugify %}" role="button">Ver reserva</a></td>
+      </tr>
+      {%empty%}
+      <tr>
+        <th scope="row">{{"No hay reservas realizadas"}}</th>
+        <td>{{""}}</td>
+        <td>{{""}}</td>
+        <td>{{""}}</td>
+        <td><a class="btn btn-dark btn-sm" role="button" href="{% url 'pages:create' %}">Crear reserva</a></td>
       </tr>
       {% endfor %}
     </tbody>

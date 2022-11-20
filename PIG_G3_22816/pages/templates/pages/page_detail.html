@@ -16,8 +16,9 @@
           <p>Monto abonado: ${{page.reserve}}</p>
           <p>Monto por abonar: ${{page.resto}}</p>
           {% if request.user.is_staff %}
-            <p><a href="{% url 'pages:update' page.id %}">Editar</a></p>
-            <p><a href="{% url 'pages:delete' page.id %}">Eliminar</a></p>
+            <br>
+            <p><a class="btn btn-success btn-sm" href="{% url 'pages:update' page.id %}" role="button">Editar</a></p>
+            <p><a class="btn btn-danger btn-sm" href="{% url 'pages:delete' page.id %}" role="button">Eliminar</a></p>
           {% endif %}
         </div>
       </div>

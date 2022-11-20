@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 # Create your views here.
 class PageListView(ListView):   
     model = Page
-
+    
 class PageDetailView(DetailView):   
     model = Page
 
