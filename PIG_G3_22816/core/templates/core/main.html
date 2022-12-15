@@ -6,27 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'core/bootstrap/css/bootstrap.min.css'%}">
+    
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
+    
 </head>
-<body style="padding: 1rem;">
+<body style="padding: 1rem; background-color: rgb(253, 253, 253);">
     <!-- NAV -->
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'home' %}">Sistema G3</a>
+    <nav class="navbar navbar-expand-lg " >
+      <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">Sistema Guardia Hospitalaria</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <ul class="nav nav-pills flex-column flex-sm-row">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'pages:pages' %}">Mostrar reservas</a>
+                <a class="nav-link" href="{% url 'pages:pages' %}">Ver pacientes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'pages:create' %}">Crear reserva</a>
+                <a class="nav-link" href="{% url 'pages:create' %}">Ingresar paciente</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/admin/">Admin</a>
+                <a class="nav-link" href="{% url 'profiles:list' %}">Enfermeros registrados</a>
               </li>
+              {% if not request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Acceder</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">Registrarse</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+              </li>
+              {% endif %}
             </ul>
            
           </div>
@@ -35,5 +56,9 @@
 
     {% block content %}{% endblock %}
     <script src="{% static 'core/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'core/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
+
 </body>
 </html>

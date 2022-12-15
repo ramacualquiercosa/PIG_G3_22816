@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'messenger',
     'pages.apps.PagesConfig',
+    'profiles',
+    
 ]
 
 MIDDLEWARE = [
@@ -121,7 +126,30 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#redirección e autenticaciones
+#LOGIN_REDIRECT_URL='pages:pages'
+LOGOUT_REDIRECT_URL='home'
+
+#Emails para pruebas en desarrollo
+# if DEBUG: 
+#     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#     EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_email")
+# else:
+#     #acá se configura un mail real para producción
+#     pass
+
+#Email para pruebas con Mailtrap
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '6dd8c0b81e0e75'
+EMAIL_HOST_PASSWORD = 'd5fc42ea2cac88'
+EMAIL_PORT = '2525'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Archivos Media (crea carpeta para almacenar archivos media)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
