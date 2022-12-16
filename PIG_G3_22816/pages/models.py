@@ -1,5 +1,5 @@
 from django.db import models
-
+from django import forms
 
 
 class Page(models.Model):
@@ -27,6 +27,10 @@ class Page(models.Model):
         verbose_name = "página"
         verbose_name_plural = "páginas"
         ordering = ['name']
+     
+        
+
+
 
     def __str__(self):
         return self.name
