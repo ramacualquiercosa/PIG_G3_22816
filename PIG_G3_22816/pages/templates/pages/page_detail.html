@@ -1,6 +1,6 @@
 {% extends 'core/main.html' %}
 {% load static %}
-{% block title %}{{page.name}}{% endblock %}
+{% block title %}Detalle de Reserva{% endblock %}
 {% block content %}
 <main role="main">
   <div class="container">
@@ -9,15 +9,22 @@
         <h2 class="section-heading mb-4">{{object.name}}</h2>
         <div>
           <p>Habitación: {{page.room}}</p>
+          <p>Datos del paciente</p>
           <p>DNI: {{page.dni}}</p>
+          <p>Habitación: {{page.room}}</p>
+          <p>Edad: {{page.age}}</p>
+          <p>Altura (Mt.): {{page.height}}</p>
+          <p>Peso (Kg.): {{page.weight}}</p>
           <p>Fecha de ingreso: {{page.entry}}</p>
-          <p>Fecha de egreso: {{page.leave}}</p>
-          <p>Precio por habitación: ${{page.price}}</p>
-          <p>Monto abonado: ${{page.reserve}}</p>
-          <p>Monto por abonar: ${{page.resto}}</p>
+          <p>Diagnostico principal: {{page.diagnostic}}</p>
+          <p>Medicación administrada: {{page.medication}}</p>
+          <p>Observaciones: {{page.observation}}</p>
+          <p>Ultimo registro: {{page.update}}</p>
+         
           {% if request.user.is_staff %}
-            <p><a href="#">Editar</a></p>
-            <p><a href="#">Eliminar</a></p>
+            <br>
+            <p><a class="btn btn-success btn-sm" href="{% url 'pages:update' page.id %}" role="button">Editar</a></p>
+            <p><a class="btn btn-danger btn-sm" href="{% url 'pages:delete' page.id %}" role="button">Eliminar</a></p>
           {% endif %}
         </div>
       </div>

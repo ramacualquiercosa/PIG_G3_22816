@@ -1,0 +1,32 @@
+{% extends 'core/main.html' %}
+{% load static %}
+{% block title %}Páginas{% endblock %}
+{% block content %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Habitación</th>
+        <th scope="col">Nombre y Apellido</th>
+        <th scope="col">DNI</th>
+        <th scope="col">Fecha de Egreso</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if not objet_list %}
+      {% for objet_list %}
+      <tr>
+        <th scope="row">{{page.id}}</th>
+        <td>Vacio</td>
+        <td>Vacio</td>
+        <td>Vacio</td>
+        <td><a href="{% url 'pages:create' %}">Crear reserva</a></td>
+      </tr>
+      {% endfor %}
+      
+      {% endif %}
+    </tbody>
+  </table>
+</main>
+{% endblock %}

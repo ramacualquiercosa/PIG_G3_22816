@@ -1,14 +1,21 @@
 from django.db import models
 
 
+
 class Page(models.Model):
     room = models.SmallIntegerField(verbose_name="Habitación", default=0)
     name =  models.CharField(verbose_name="Nombre y apellido", max_length=200, default="")
     dni =  models.CharField(verbose_name="DNI", max_length=200, default="")
+    age = models.CharField(verbose_name="Edad", max_length=200, default="")
+    height = models.DecimalField(verbose_name="Altura", max_digits=5, decimal_places=2)
+    weight = models.DecimalField(verbose_name="Peso", max_digits=5, decimal_places=2)
     entry = models.DateField(verbose_name="Fecha de ingreso", blank=True, null=True)
-    leave = models.DateField(verbose_name="Fecha de egreso", blank=True, null=True)
-    price =  models.IntegerField(verbose_name="Precio por habitación", default=0)
-    reserve =  models.IntegerField(verbose_name="Monto abonado", default=0) 
+    diagnostic = models.CharField(verbose_name="Diagnostico principal", max_length=200, default="")
+    medication =  models.CharField(verbose_name="Medicación administrada", max_length=200, default="")
+    observation = models.TextField(verbose_name="Observación", max_length=500, null=True, blank=True)
+    update = models.DateTimeField(verbose_name="Actualizacion",auto_now=True)
+    
+    
     
 
     def resto(self):
@@ -19,7 +26,7 @@ class Page(models.Model):
     class Meta:
         verbose_name = "página"
         verbose_name_plural = "páginas"
-        ordering = ['leave', 'name']
+        ordering = ['name']
 
     def __str__(self):
         return self.name
